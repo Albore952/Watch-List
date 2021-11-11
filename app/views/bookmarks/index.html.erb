@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Here are all your movies</h1>
+
+  <p>Select a movie to inspect:</p>
+  <% @bookmarks.each do |bookmark| %>
+  <p><%= link_to bookmark.content, bookmark_path%> <%= link_to bookmark_path(bookmark),
+  method: :delete,
+  data: { confirm: "Are you sure?" } do %>
+  <i class="far fa-trash-alt"></i>
+  <%= end %>
+  </p>
+  <% end %>
+  <br>
+  <%= link_to "Add a bookmark", new_bookmark_path %>
+</div>

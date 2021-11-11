@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Here are all your lists</h1>
+
+  <p>Select a list to inspect:</p>
+  <% @lists.each do |list| %>
+  <p><%= link_to list.name, list_path(list)%>
+<%= link_to list_path(list),
+  method: :delete,
+  data: { confirm: "Are you sure?" } do %>
+  <i class="far fa-trash-alt"></i>
+  <% end %>
+  </p>
+  <% end %>
+  <%= link_to "Add a list", new_list_path %>
+</div>
