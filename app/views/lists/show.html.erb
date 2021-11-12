@@ -1,20 +1,30 @@
 <div class="container">
-  <h1><%= @list.name %></h1>
+  <h1><%= @list.name.capitalize %></h1>
+  <p>
+    <%= link_to lists_path do %>
+    <i class="fas fa-arrow-left"> Get back on list view</i>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to new_list_bookmark_path(@list) do %>
+    <i class="fas fa-plus"> Add a bookmark</i>
+    <% end %>
+  </p>
   <% @list.bookmarks.each do |bookmark| %>
-  <p> <%= bookmark.movie.title %>
+  <h2> <%= bookmark.movie.title %>
   <%= link_to bookmark_path(bookmark),
               method: :delete,
               data: { confirm: "Are you sure?" } do %>
-    <i class="far fa-trash-alt"></i>
+    <i class="far fa-trash-alt"> Delete the bookmark</i>
   <% end %>
-  </p>
-  <p> <%= bookmark.movie.overview %>
+  </h2>
+  <p> <strong>Overview: </strong> <%= bookmark.movie.overview %>
   </p>
   <img src="<%= bookmark.movie.poster_url%>">
-  <p> <%= bookmark.movie.rating %>
+  <br>
+  <p> <strong>Rating: </strong>  <%= "★" * bookmark.movie.rating.fdiv(2) %><%= "☆" * (5 - bookmark.movie.rating.fdiv(2)) %> <span><%= bookmark.movie.rating %></span>
   </p>
-  <p> <%= bookmark.comment %>
+  <p> <strong>Comment: </strong><%= bookmark.comment %>
   </p>
   <% end %>
- <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
 </div>

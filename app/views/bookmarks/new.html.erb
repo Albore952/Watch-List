@@ -1,5 +1,10 @@
 <div class="container">
   <h1> You can create a bookmark here</h1>
+      <p>
+    <%= link_to lists_path do %>
+    <i class="fas fa-arrow-left"> Get back on list view</i>
+    <% end %>
+  </p>
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <%= f.input :comment %>
     <%= f.association :movie %>
