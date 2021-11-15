@@ -8,6 +8,8 @@
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name %>
     <br>
+    <%= f.input :photo, as: :file %>
+    <br>
     <%= f.submit "Submit list", class: "btn btn-primary" %>
   <% end %>
 </div>
